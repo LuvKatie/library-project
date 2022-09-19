@@ -1,0 +1,21 @@
+#book-display{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+}
+
+
+.book-card {
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.book-card div {
+    background-color: peachpuff;
+
+    height: 200px;
+    width: 200px;
+}
