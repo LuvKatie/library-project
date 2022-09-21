@@ -18,17 +18,17 @@
 
                     <div>
                         <label for="author">Author</label>
-                        <input type="text" name="author" id="author" placeholder="Shannon Messenger"></input>
+                        <input type="text" name="author" id="author" placeholder="Shannon Messenger" required minlength="2" maxlength="123"></input>
                     </div>
                     
                     <div>
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" placeholder="Keeper of The Lost Cities"></input>
+                        <input type="text" name="title" id="title" placeholder="Keeper of The Lost Cities" required minlength="1" maxlength="123"></input>
                     </div>
 
                     <div>
                         <label for="pages">Pages</label>
-                        <input type="text" name="pages" id="pages" placeholder="692"></input>
+                        <input type="text" name="pages" id="pages" placeholder="692" required pattern="[0-9]+"></input>
                     </div>
 
                     
