@@ -9,13 +9,14 @@ const pages = document.getElementById('pages');
 const yes = document.getElementById('readYes');
 const no = document.getElementById('readNo');
 
-let myLibrary = ['KOTLC', 'Alchemist', '48 Laws of Power'];
+let myLibrary = [];
 
 function Book(author, title, pages, read) {
     this.author = author;
     this.title = title;
     this.pages = pages;
     this.read = read;
+    this.bookNumber = myLibrary.length + 1; // data-attribute given corresponding to the specific book
 }
 
 function addBookToDisplay() {
@@ -56,24 +57,17 @@ submitBook.addEventListener('click', () => {
 })
 
 function createBook() {
-    const freshBook = new Book(author.value, title.value, pages.value, yes.checked);
-    console.log(freshBook.author);
-    console.log(freshBook.read ? 'I have read this book!' : 'I have not read this book...');
-    // When adding the new book to the page we have to give them a data-attribute that corresponds to their place in the library array
-    // Most likely we will give them a class like book-1 book-2 book-0 book-22 etc
+    myLibrary.push(new Book(author.value, title.value, pages.value, yes.checked));
 
-    // Each card will have Author, Title, Pages, Read displayed
-    // We can style this when we get the functionality down
-    // Most likely this will just be entering values after grabbing data from the form and updating the array
-    // once the array has been updated we start the process of taking the latest item to add to the display
-
-    // Have to figure out how we can add multiple books to array and if my current method is correct or not
+    // Figured out how to add new books to the array as many times as we want
+    // Now we have to work on adding the new books to the display each time we have a new addition
     
-    // Then we need to add a ' NEW BOOK ' button that will actually bring up the form to have new books be added
+    // Add a ' NEW BOOK ' button that will actually bring up the form to have new books be added
 
     // Button to remove a book from display; 
-    // most likely will just target specific book to remove from array and have display be updated with new set of array items
+    // Target book data-attribute bookNumber.
 
-    // Button to change a books read status; this will just be a simple toggle of class ' read ' and if a book doesn't have such class
-    // it will stay ' not read '
+    // Button to change a books read status; we can just assign the books read value to false or true.
+    // Example: myLibrary[0].read = true;
+    // Tested it and it works.
 }
