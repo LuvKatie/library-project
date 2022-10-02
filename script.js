@@ -20,24 +20,49 @@ function Book(author, title, pages, read) {
 }
 
 function addBookToDisplay() {
-    let totalBookCount = myLibrary.length;
-    let i = 1;
-    while (i <= totalBookCount) {
-        const newDiv = document.createElement('div');
-        const childDiv = document.createElement('div');
-        bookDisplay.appendChild(newDiv);
-        newDiv.classList.add('book-card', `book-${i}`);
-        newDiv.appendChild(childDiv);
-        i++
-    }
-}
+    const newDiv = document.createElement('div');
+    const childDiv = document.createElement('div');
 
-function addBookToLibrary() {
-    let newBook = prompt('Which book would you like to add to the library?: ')
-    myLibrary.push(newBook);
-    console.log(myLibrary);
+    const p_author = document.createElement('p');
+    const p_title = document.createElement('p');
+    const p_pages = document.createElement('p');
+    const p_read = document.createElement('p');
+
+    const readBtn = document.createElement('button');
+
     let newestBook = myLibrary.length - 1;
-    return console.log(`You have added ${myLibrary[newestBook]} to the library!`)
+
+    p_author.innerHTML = `Author: ${myLibrary[newestBook].author}`;
+    p_title.innerHTML = `Title: ${myLibrary[newestBook].title}`;
+    p_pages.innerHTML = `Pages: ${myLibrary[newestBook].pages}`;
+    p_read.innerHTML = `Have Read: ${myLibrary[newestBook].read}`;
+    readBtn.innerHTML = 'Read?';
+
+    bookDisplay.appendChild(newDiv);
+
+    newDiv.classList.add('book-card');
+    newDiv.appendChild(childDiv);
+
+    childDiv.classList.add('book', `${newestBook + 1}`);
+    p_author.classList.add(`author`);
+    p_title.classList.add(`title`);
+    p_pages.classList.add('pages');
+    p_read.classList.add(`read`);
+    readBtn.classList.add('read-status');
+    childDiv.append(p_author, p_title, p_pages, p_read, readBtn);
+
+    // Attaching event listener to toggle Read Status of that particular book
+    const readBtnFunc = document.querySelector('.read-status');
+
+    readBtnFunc.addEventListener('click', () => {
+    if(readBtnFunc.previousElementSibling.innerHTML == 'Have Read: No'){
+        readBtnFunc.previousElementSibling.innerHTML = 'Have Read: Yes';
+        return;
+    } else {
+        readBtnFunc.previousElementSibling.innerHTML = 'Have Read: No';
+    };
+})
+    
 }
 
 submitBook.addEventListener('click', () => {
@@ -57,17 +82,25 @@ submitBook.addEventListener('click', () => {
 })
 
 function createBook() {
-    myLibrary.push(new Book(author.value, title.value, pages.value, yes.checked));
+    if(yes.checked) {
+        myLibrary.push(new Book(author.value, title.value, pages.value, 'Yes'));
+    } else {
+        myLibrary.push(new Book(author.value, title.value, pages.value, 'No'));
+    }
 
-    // Figured out how to add new books to the array as many times as we want
-    // Now we have to work on adding the new books to the display each time we have a new addition
-    
-    // Add a ' NEW BOOK ' button that will actually bring up the form to have new books be added
-
-    // Button to remove a book from display; 
-    // Target book data-attribute bookNumber.
-
-    // Button to change a books read status; we can just assign the books read value to false or true.
-    // Example: myLibrary[0].read = true;
-    // Tested it and it works.
+    addBookToDisplay();
 }
+
+// Figured out how to add new books to the array as many times as we want
+// Now we have to work on adding the new books to the display each time we have a new addition
+
+// Add a ' NEW BOOK ' button that will actually bring up the form to have new books be added
+
+// Button to remove a book from display; 
+// Target book data-attribute bookNumber.
+
+// Or every time we add a book to the page we can give it a specific class
+
+// Button to change a books read status; we can just assign the books read value to false or true.
+// Example: myLibrary[0].read = true;
+// Tested it and it works.

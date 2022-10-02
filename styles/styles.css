@@ -14,24 +14,50 @@ body {
 #book-display{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(4, 1fr);
 }
 
 .book-card {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     height: 100%;
     width: 100%;
 }
 
 .book-card div {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-between;
+
     background-color: peachpuff;
 
     height: 200px;
-    width: 200px;
+    width: 350px;
 
     border: 1px solid red;
+
+    padding-bottom: 8px;
+}
+
+.book-card div p {
+    margin: 0px;
+    padding: 12px 0px;
+
+    text-align: center;
+}
+
+.read-status {
+    width: 100px;
+    height: 30px;
+
+    border-radius: 6px;
+    border: none;
+
+    background-color: lightblue;
 }
 
 #form-container {
