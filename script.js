@@ -58,25 +58,20 @@ function addBookToDisplay() {
     childDiv.append(p_author, p_title, p_pages, p_read, btnDiv);
     btnDiv.append(readBtn, deleteBtn);
 
-    // Attaching event listener to toggle Read Status of that particular book
-    const readBtnFunc = document.querySelector('.read-status');
-
-    readBtnFunc.addEventListener('click', () => {
-    if(readBtnFunc.previousElementSibling.innerHTML == 'Have Read: No'){
-        readBtnFunc.previousElementSibling.innerHTML = 'Have Read: Yes';
+    // Toggling read status
+    readBtn.addEventListener('click', () => {
+        if(btnDiv.previousElementSibling.innerHTML == 'Have Read: No'){
+        btnDiv.previousElementSibling.innerHTML = 'Have Read: Yes';
         return;
-    } else {
-        readBtnFunc.previousElementSibling.innerHTML = 'Have Read: No';
-    }
-
+        } else {
+        btnDiv.previousElementSibling.innerHTML = 'Have Read: No';
+        }
     })
-
-    // Deleting a book card
-    const deleteBtnFunc = document.querySelector('.delete-book');
-
-    deleteBtnFunc.addEventListener('click', () => {
-    const cardSelect = deleteBtnFunc.closest('.book-card');
-    cardSelect.remove();
+    
+    // Deleting book card
+    deleteBtn.addEventListener('click', () => {
+        const cardSelect = deleteBtn.closest('.book-card');
+        cardSelect.remove();
     })
 
 }
