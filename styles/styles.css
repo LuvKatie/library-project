@@ -26,7 +26,8 @@ body {
     width: 100%;
 }
 
-.book-card div {
+
+.book-card > div {
     display: flex;
     flex-direction: column;
 
@@ -34,23 +35,30 @@ body {
     justify-content: space-between;
 
     background-color: peachpuff;
-
+    
     height: 200px;
     width: 350px;
-
+    
     border: 1px solid red;
-
+    
     padding-bottom: 8px;
 }
+
 
 .book-card div p {
     margin: 0px;
     padding: 12px 0px;
-
+    
     text-align: center;
 }
 
-.read-status {
+.card-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.read-status,
+.delete-book {
     width: 100px;
     height: 30px;
 

@@ -22,6 +22,7 @@ function Book(author, title, pages, read) {
 function addBookToDisplay() {
     const newDiv = document.createElement('div');
     const childDiv = document.createElement('div');
+    const btnDiv = document.createElement('div');
 
     const p_author = document.createElement('p');
     const p_title = document.createElement('p');
@@ -29,6 +30,7 @@ function addBookToDisplay() {
     const p_read = document.createElement('p');
 
     const readBtn = document.createElement('button');
+    const deleteBtn = document.createElement('button');
 
     let newestBook = myLibrary.length - 1;
 
@@ -37,6 +39,8 @@ function addBookToDisplay() {
     p_pages.innerHTML = `Pages: ${myLibrary[newestBook].pages}`;
     p_read.innerHTML = `Have Read: ${myLibrary[newestBook].read}`;
     readBtn.innerHTML = 'Read?';
+    deleteBtn.innerHTML = 'Delete Book';
+
 
     bookDisplay.appendChild(newDiv);
 
@@ -49,7 +53,10 @@ function addBookToDisplay() {
     p_pages.classList.add('pages');
     p_read.classList.add(`read`);
     readBtn.classList.add('read-status');
-    childDiv.append(p_author, p_title, p_pages, p_read, readBtn);
+    deleteBtn.classList.add('delete-book');
+    btnDiv.classList.add('card-btns');
+    childDiv.append(p_author, p_title, p_pages, p_read, btnDiv);
+    btnDiv.append(readBtn, deleteBtn);
 
     // Attaching event listener to toggle Read Status of that particular book
     const readBtnFunc = document.querySelector('.read-status');
@@ -60,8 +67,17 @@ function addBookToDisplay() {
         return;
     } else {
         readBtnFunc.previousElementSibling.innerHTML = 'Have Read: No';
-    };
-})
+    }
+
+    })
+
+    // Deleting a book card
+    const deleteBtnFunc = document.querySelector('.delete-book');
+
+    deleteBtnFunc.addEventListener('click', () => {
+    const cardSelect = deleteBtnFunc.closest('.book-card');
+    cardSelect.remove();
+    })
     
 }
 
