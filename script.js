@@ -78,7 +78,7 @@ function addBookToDisplay() {
     const cardSelect = deleteBtnFunc.closest('.book-card');
     cardSelect.remove();
     })
-    
+
 }
 
 submitBook.addEventListener('click', () => {
@@ -106,17 +106,3 @@ function createBook() {
 
     addBookToDisplay();
 }
-
-// Figured out how to add new books to the array as many times as we want
-// Now we have to work on adding the new books to the display each time we have a new addition
-
-// Add a ' NEW BOOK ' button that will actually bring up the form to have new books be added
-
-// Button to remove a book from display; 
-// Target book data-attribute bookNumber.
-
-// Or every time we add a book to the page we can give it a specific class
-
-// Button to change a books read status; we can just assign the books read value to false or true.
-// Example: myLibrary[0].read = true;
-// Tested it and it works.
